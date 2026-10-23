@@ -68,7 +68,13 @@ function renderQuestion() {
   document.querySelector('#questionPanel').innerHTML = `
     <div class="question-count">QUESTION ${String(questionIndex + 1).padStart(2, '0')} / ${String(week.questions.length).padStart(2, '0')}</div>
     <div class="question-navigator" aria-label="Question navigation">${week.questions.map((_, i) => `<button class="question-number ${i === questionIndex ? 'is-current' : ''} ${questionStates[i].reviewed ? 'is-reviewed' : ''}" data-question="${i}">${i + 1}</button>`).join('')}</div>
-    <h3>${text}</h3>
+    ${(() => {
+      const nl = text.indexOf('\n\n');
+      if (nl === -1) return `<h3>${text}</h3>`;
+      const prose = text.slice(0, nl);
+      const code  = text.slice(nl + 2);
+      return `<h3>${prose}</h3><pre class="question-code">${code}</pre>`;
+    })()}
     <div class="answers">${options.map((option, i) => `<button class="answer ${state.selected.has(i) ? 'selected' : ''} ${state.reviewed && answers.includes(i) ? 'correct' : ''} ${state.reviewed && state.selected.has(i) && !answers.includes(i) ? 'incorrect' : ''}" data-index="${i}" aria-pressed="${state.selected.has(i)}" ${state.reviewed ? 'disabled' : ''}><span class="answer-key">${String.fromCharCode(65 + i)}</span><span>${option}</span></button>`).join('')}</div>
     <div class="feedback ${state.reviewed ? 'show' : ''}" id="feedback">${state.reviewed ? (state.correct ? 'Nice work — that is the correct answer.' : `Not quite. The correct answer${answers.length > 1 ? 's are' : ' is'} ${answers.map(index => String.fromCharCode(65 + index)).join(', ')}.`) : ''}</div>
     <div class="quiz-actions"><button class="previous-button" id="previousButton" ${questionIndex === 0 ? 'disabled' : ''}>← Previous</button><span class="hint">${state.reviewed ? (state.correct ? 'Correct answer' : 'Answer reviewed') : (isMultiSelect ? 'Select all answers that apply' : 'Choose one answer')}</span><div class="action-buttons"><button class="check-button" id="checkButton" ${state.reviewed || state.selected.size === 0 ? 'disabled' : ''}>Check answer</button><button class="next-button" id="nextButton">${isLastQuestion ? 'See results' : 'Next →'}</button></div></div>`;

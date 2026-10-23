@@ -50,13 +50,31 @@
           <div class="missed-title-group">
             <span class="eyebrow">REVIEW DECK</span>
             <h2>Missed Questions <span class="missed-count" id="missedCount">0</span></h2>
-            <p class="missed-subtitle">Questions you answer incorrectly across any week are saved here so you can review and master them.</p>
+            <p class="missed-subtitle">Review questions you missed across any week with correct answers displayed row by row, or start a practice session to clear them.</p>
           </div>
-          <button class="reset-button" id="resetMissedButton" title="Clear all missed questions">&#8635; Reset Deck</button>
+          <div class="missed-header-actions">
+            <button class="practice-header-btn" id="practiceMissedBtn" title="Start a quiz with only missed questions">
+              <span>▶</span> Practice Missed
+            </button>
+            <button class="reset-button" id="resetMissedButton" title="Clear all missed questions">&#8635; Reset Deck</button>
+          </div>
         </div>
+
+        <!-- Interactive Practice Mode Banner (shown when missed questions exist) -->
+        <div class="missed-practice-banner" id="missedPracticeBanner">
+          <div class="practice-banner-info">
+            <span class="practice-badge">INTERACTIVE PRACTICE</span>
+            <h3>Participate in Missed Questions Quiz</h3>
+            <p>Retake your missed questions in an active quiz. Answer correctly to automatically clear them from your review deck.</p>
+          </div>
+          <button class="practice-start-btn" id="startPracticeMissedBtn">
+            <span>▶</span> Start Practice Quiz (<span id="practiceBannerCount">0</span>)
+          </button>
+        </div>
+
         <div class="missed-empty" id="missedEmpty">
           <div class="missed-empty-icon">&#127919;</div>
-          <p>No missed questions yet! As you practice the weekly quizzes, any questions you miss will be collected here for targeted review.</p>
+          <p>No missed questions yet! As you practice the weekly quizzes, any questions you miss will be collected here for targeted review and practice.</p>
         </div>
         <div class="missed-list" id="missedList"></div>
       </div>

@@ -861,9 +861,45 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.missed-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.practice-header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--orange);
+    color: #fff;
+    border: 0;
+    border-radius: 11px;
+    padding: 10px 18px;
+    font: 700 13px Manrope, sans-serif;
+    cursor: pointer;
+    transition: all .18s;
+    box-shadow: 0 4px 14px rgba(255, 90, 54, 0.28);
+}
+
+.practice-header-btn:hover {
+    background: #ff451d;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 90, 54, 0.38);
+}
+
+.practice-header-btn:disabled {
+    background: #bdc5df;
+    color: #fff;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 .missed-title-group {
@@ -927,6 +963,88 @@ main {
     background: #fff4f1;
 }
 
+/* ── Interactive Practice Banner ── */
+.missed-practice-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(135deg, #1b2438 0%, #151a26 100%);
+    border: 1px solid #28334b;
+    border-radius: 18px;
+    padding: 24px 30px;
+    margin-bottom: 28px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(18, 25, 41, 0.15);
+}
+
+.missed-practice-banner.hidden {
+    display: none !important;
+}
+
+.practice-banner-info h3 {
+    margin: 6px 0 6px;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+.practice-banner-info p {
+    margin: 0;
+    color: #9daec8;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.practice-badge {
+    display: inline-block;
+    font: 700 10px 'DM Mono', monospace;
+    color: #ff937b;
+    letter-spacing: 1px;
+    background: rgba(255, 90, 54, 0.18);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.practice-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--orange);
+    color: #fff;
+    border: 0;
+    border-radius: 12px;
+    padding: 13px 22px;
+    font: 700 14px Manrope, sans-serif;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(255, 90, 54, 0.35);
+}
+
+.practice-start-btn:hover {
+    background: #ff431a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(255, 90, 54, 0.45);
+}
+
+.secondary-button {
+    border: 1.5px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    border-radius: 9px;
+    padding: 13px 20px;
+    font: 700 13px Manrope;
+    cursor: pointer;
+    transition: all .15s;
+    margin-left: 10px;
+}
+
+.secondary-button:hover {
+    border-color: var(--ink);
+    background: #f7f8fa;
+}
+
 .missed-empty {
     display: flex;
     flex-direction: column;
@@ -953,17 +1071,17 @@ main {
 }
 
 .missed-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .missed-card {
     position: relative;
     background: #fff;
     border: 1.5px solid #e6e8ee;
-    border-radius: 16px;
-    padding: 22px 22px 18px;
+    border-radius: 18px;
+    padding: 24px 28px 22px;
     display: flex;
     flex-direction: column;
     transition: border-color .18s, box-shadow .18s;
@@ -974,12 +1092,19 @@ main {
     box-shadow: 0 8px 24px rgba(255, 90, 54, 0.08);
 }
 
-.missed-card-meta {
+.missed-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     padding-right: 28px;
+}
+
+.missed-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .missed-week-tag {
@@ -991,61 +1116,115 @@ main {
 
 .missed-q-num {
     font: 700 11px 'DM Mono';
-    color: #929db3;
+    color: #8c97ad;
+}
+
+.missed-type-badge {
+    font: 700 10px 'DM Mono';
+    background: #f0f2f7;
+    color: #5d6a82;
+    padding: 2px 7px;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
 }
 
 .missed-question-text {
     margin: 0 0 12px;
-    font-size: 14px;
+    font-size: 15.5px;
     line-height: 1.6;
     color: var(--ink);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .missed-code-box {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     background: #171c28;
-    border-radius: 9px;
+    border-radius: 10px;
     border-left: 3px solid var(--orange);
     overflow-x: auto;
 }
 
 .missed-code {
     margin: 0;
-    padding: 10px 14px;
+    padding: 12px 16px;
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 12.5px;
+    line-height: 1.65;
     color: #d8e2f3;
     white-space: pre;
 }
 
-.missed-answer-label {
-    margin-top: auto;
+/* ── Missed Question Options Row-by-Row ── */
+.missed-options-list {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     gap: 8px;
-    font-size: 12.5px;
-    line-height: 1.5;
-    color: #197350;
-    background: #effbf5;
-    border-radius: 8px;
-    padding: 8px 12px;
+    margin-top: 10px;
 }
 
-.missed-correct-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
+.missed-option-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #eaedf4;
+    background: #fafbfe;
+    font: 500 13.5px/1.55 Manrope, sans-serif;
+    color: #48546b;
+    transition: all 0.15s ease;
+}
+
+.missed-option-row.is-correct {
+    background: #effbf5;
+    border-color: #9cdbc0;
+    color: #125e40;
+    font-weight: 600;
+}
+
+.missed-option-row .option-key {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: #e2e6f0;
+    color: #55627a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 11px 'DM Mono', monospace;
+    flex-shrink: 0;
+}
+
+.missed-option-row.is-correct .option-key {
     background: #35a972;
-    flex: none;
-    margin-top: 6px;
+    color: #ffffff;
+}
+
+.missed-option-row .option-text {
+    flex-grow: 1;
+}
+
+.missed-option-row.is-code .option-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+}
+
+.missed-option-row .correct-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font: 700 11px 'DM Mono', monospace;
+    background: #dcf5e7;
+    color: #197350;
+    padding: 3px 9px;
+    border-radius: 6px;
+    flex-shrink: 0;
 }
 
 .missed-remove-btn {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 16px;
+    right: 16px;
     border: 0;
     background: transparent;
     color: #a6b0c2;
@@ -1064,5 +1243,6 @@ main {
 
 @media(max-width: 800px) {
     .missed-panel { padding: 28px 20px; }
-    .missed-list { grid-template-columns: 1fr; }
+    .missed-practice-banner { flex-direction: column; align-items: flex-start; }
+    .practice-start-btn { width: 100%; justify-content: center; }
 }
